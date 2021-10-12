@@ -5,7 +5,7 @@ class TypingTest:
         pass
 
     def get_random_words(self, random_no_of_words):
-        with open('top_100_words.txt', 'r') as f:
+        with open('dictionary.txt', 'r') as f:
             words_list = f.read().split(',')
         random_words = []
         for x in range(0 , random_no_of_words):
