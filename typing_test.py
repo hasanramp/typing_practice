@@ -19,7 +19,7 @@ class TypingTest:
         for word in words:
             number_of_characters += len(word)
         
-        
+        number_of_characters = number_of_characters + len(words) - 1
         average_number_of_words = number_of_characters / 5
         wpm = average_number_of_words / (time_taken / 60), number_of_characters
         return wpm
