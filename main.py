@@ -17,15 +17,18 @@ input_words_list = input_words.split(' ')
 index = 0
 correct_words = []
 incorrect_words = []
-for input_word in input_words_list:
-    word = words[index]
-    if word == input_word:
-        correct_words.append(word)
-    else:
-        incorrect_words.append(word)
+try:
+    for input_word in input_words_list:
+        word = words[index]
+        if word == input_word:
+            correct_words.append(word)
+        else:
+            incorrect_words.append(word)
 
-    index += 1
-
+        index += 1
+except IndexError:
+    print('the number of words entered are more than the number of words printed out. You probably made some mistake while typing which resulted in this. Please try again')
+    
 time_taken = round(time.time() - init_time, 1)
 raw_wpm, total_number_of_char = tt.calculate_wpm(words, time_taken)
 wpm, correct_number_of_char = tt.calculate_wpm(correct_words, time_taken)
