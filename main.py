@@ -1,12 +1,27 @@
 import time
 import random2
 from typing_test import TypingTest
+from __init__ import get_configuration
+
+n_of_words, start_method = get_configuration()
 
 tt = TypingTest()
 
-input('press enter to start: ')
+if start_method == 'enter':
+    input('press enter to start: ')
+elif start_method == 'timer':
+    print('Typing test will start in 5 seconds')
+    index = 0
+    while True:
+        if index == 5:
+            print('START!')
+            break
+        print(5 - index)
+        index += 1
+        time.sleep(1)
+
 init_time = time.time()
-words = tt.get_random_words(50)
+words = tt.get_random_words()
 words_str = ', '.join(words)
 print('\n \n')
 print('========================================================================================')

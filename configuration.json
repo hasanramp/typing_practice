@@ -1,0 +1,13 @@
+{
+    "no. of words": {
+        "current": 25
+    },
+    "start method": {
+        "current": "enter",
+        "seconds": null,
+        "options": [
+            "enter",
+            "timer"
+        ]
+    }
+}

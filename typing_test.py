@@ -1,14 +1,15 @@
 import random2
-
+from __init__ import get_configuration
 class TypingTest:
     def __init__(self):
-        pass
+        self.random_no_of_words, self.start_method = get_configuration()
 
-    def get_random_words(self, random_no_of_words):
+    def get_random_words(self):
+
         with open('dictionary.txt', 'r') as f:
             words_list = f.read().split(',')
         random_words = []
-        for x in range(0 , random_no_of_words):
+        for x in range(0 , self.random_no_of_words):
             random_word = random2.choice(words_list)
             random_words.append(random_word)
         
