@@ -3,7 +3,7 @@
         "current": 25
     },
     "start method": {
-        "current": "enter",
+        "current": "timer",
         "seconds": null,
         "options": [
             "enter",
