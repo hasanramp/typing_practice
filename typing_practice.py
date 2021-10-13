@@ -29,8 +29,8 @@ elif command == 'update':
 elif command == 'configure':
     os.chdir('typing_practice')
     if platform == 'linux':
-        os.system('python3 configuration.py')
+        os.system('python3 configure.py')
     elif platform == 'win32':
-        os.system('py configuration.py')
+        os.system('py configure.py')
 
 
