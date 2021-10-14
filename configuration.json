@@ -1,6 +1,6 @@
 {
     "no. of words": {
-        "current": 20
+        "current": 25
     },
     "start method": {
         "current": "timer",
@@ -10,8 +10,11 @@
             "timer"
         ]
     },
-    "difficulty" : {
-        "current" : "easy",
-        "options" : ["easy", "difficult"]
+    "difficulty": {
+        "current": "easy",
+        "options": [
+            "easy",
+            "difficult"
+        ]
     }
 }
