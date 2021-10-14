@@ -9,7 +9,7 @@ class TypingTest:
         if self.difficulty == 'easy':
             with open('easy_difficulty.txt', 'r') as f:
                 words_list = f.read().split(',')
-        elif self.difficulty == 'difficulty':
+        elif self.difficulty == 'difficult':
             with open('dictionary.txt', 'r') as f:
                 words_list = f.read().split(',')
         else:
@@ -20,10 +20,10 @@ class TypingTest:
                 file = 'install_tt.py'
                 python_interpreter_call_command = 'py'
             else:
-                print('this app is not supported for macOS. Kuhahahahahaha. Apple suuuuuucks!!!')
                 exit()
             print(f'There was some mistake in the difficulty in configuration file. Use "{python_interpreter_call_command} {file} configure" to fix this issue')
             print('The difficulty options are: easy & difficult. Enter one of these when prompted.')
+            exit()
         random_words = []
         for x in range(0 , self.random_no_of_words):
             random_word = random2.choice(words_list)

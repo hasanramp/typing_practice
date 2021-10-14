@@ -11,7 +11,7 @@
         ]
     },
     "difficulty": {
-        "current": "easy",
+        "current": "difficult",
         "options": [
             "easy",
             "difficult"
