@@ -3,7 +3,7 @@ import random2
 from typing_test import TypingTest
 from __init__ import get_configuration
 
-n_of_words, start_method = get_configuration()
+n_of_words, start_method, diffculty = get_configuration()
 
 tt = TypingTest()
 
@@ -26,7 +26,11 @@ words_str = ', '.join(words)
 print('\n \n')
 print('========================================================================================')
 print(words_str)
-input_words = input('enter the words: ')
+try:
+    input_words = input('enter the words: ')
+except KeyboardInterrupt:
+    print('\nEXIT!')
+    exit()
 input_words_list = input_words.split(' ')
 
 index = 0
@@ -54,8 +58,8 @@ print('\n \n')
 space = '                         '
 print(f'{space}Accuracy = {accuracy}%\n')
 print(f'{space}time taken = {time_taken}\n')
-print(f'{space}Raw wpm: {raw_wpm}\n')
-print(f'{space}wpm = {wpm}\n')
+print(f'{space}Raw wpm: {round(raw_wpm, 1)}\n')
+print(f'{space}wpm = {round(wpm, 1)}\n')
 incorrect_words_str = ', '.join(incorrect_words)
 print(f'{space}incorrect words: {incorrect_words_str}\n')
 print(f'{space}correct number of characters: {correct_number_of_char}\n')

@@ -1,13 +1,29 @@
 import random2
 from __init__ import get_configuration
+from sys import platform
 class TypingTest:
     def __init__(self):
-        self.random_no_of_words, self.start_method = get_configuration()
+        self.random_no_of_words, self.start_method, self.difficulty = get_configuration()
 
     def get_random_words(self):
-
-        with open('dictionary.txt', 'r') as f:
-            words_list = f.read().split(',')
+        if self.difficulty == 'easy':
+            with open('easy_difficulty.txt', 'r') as f:
+                words_list = f.read().split(',')
+        elif self.difficulty == 'difficulty':
+            with open('dictionary.txt', 'r') as f:
+                words_list = f.read().split(',')
+        else:
+            if platform == 'linux':
+                file = 'typing_practice.py'
+                python_interpreter_call_command = 'python3'
+            elif platform == 'win32':
+                file = 'install_tt.py'
+                python_interpreter_call_command = 'py'
+            else:
+                print('this app is not supported for macOS. Kuhahahahahaha. Apple suuuuuucks!!!')
+                exit()
+            print(f'There was some mistake in the difficulty in configuration file. Use "{python_interpreter_call_command} {file} configure" to fix this issue')
+            print('The difficulty options are: easy & difficult. Enter one of these when prompted.')
         random_words = []
         for x in range(0 , self.random_no_of_words):
             random_word = random2.choice(words_list)

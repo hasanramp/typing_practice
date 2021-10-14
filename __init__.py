@@ -8,5 +8,5 @@ def get_configuration():
     n_of_words = configuration_json['no. of words']['current']
     
     start_method = configuration_json['start method']['current']
-
-    return n_of_words, start_method
+    difficulty = configuration_json['difficulty']['current']
+    return n_of_words, start_method, difficulty
