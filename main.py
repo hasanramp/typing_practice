@@ -8,7 +8,7 @@ n_of_words, start_method, diffculty = get_configuration()
 tt = TypingTest()
 
 if start_method == 'enter':
-    input('press enter to start: ')
+    input('press enter to start:\n')
 elif start_method == 'timer':
     print('Typing test will start in 5 seconds')
     index = 0

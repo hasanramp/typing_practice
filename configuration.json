@@ -1,6 +1,7 @@
 {
     "no. of words": {
-        "current": 25
+        "current": 25,
+        "options": "however many you want"
     },
     "start method": {
         "current": "timer",
