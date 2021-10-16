@@ -8,7 +8,7 @@ print('updating installer')
 if platform == 'linux':
     os.system(f'cp typing_practice.py {parent_dir}/typing_practice.py')
 elif platform == 'win32':
-    os.system(f'move typing_practice.py {parent_dir}/typing_practice.py')
+    os.system(f'move typing_practice.py {parent_dir}/install_tt.py')
 
 configuration_file_name = 'configuration.json'
 configuration_file = open(configuration_file_name, 'r')

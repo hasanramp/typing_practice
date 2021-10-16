@@ -29,9 +29,12 @@ elif command == 'update':
 elif command == 'configure':
     os.chdir('typing_practice')
     if platform == 'linux':
-        os.chdir('typing_practice')
         os.system('python3 configure.py')
     elif platform == 'win32':
         os.system('py configure.py')
-
-
+elif command == 'release_notes':
+    os.chdir('typing_practice')
+    if platform == 'linux':
+        os.system('xdg-open release_notes.html')
+    elif platform == 'win32':
+        os.system('start release_notes.html')
