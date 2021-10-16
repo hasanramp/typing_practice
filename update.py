@@ -6,7 +6,7 @@ cwd = os.getcwd()
 parent_dir = os.path.abspath(os.path.join(cwd, os.pardir))
 print('updating installer')
 if platform == 'linux':
-    os.system(f'mv typing_practice.py {parent_dir}/typing_practice.py')
+    os.system(f'cp typing_practice.py {parent_dir}/typing_practice.py')
 elif platform == 'win32':
     os.system(f'move typing_practice.py {parent_dir}/typing_practice.py')
 
@@ -19,6 +19,6 @@ if configuration_json['version'] == "1.0.0":
     print('opening release notes')
     os.chdir(parent_dir)
     if platform == 'linux':
-        os.system('python3 typing_practice.py release notes')
+        os.system('python3 typing_practice.py release_notes')
     elif platform == 'win32':
-        os.system('py install_tt.py release notes')
+        os.system('py install_tt.py release_notes')
