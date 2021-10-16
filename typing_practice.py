@@ -35,7 +35,7 @@ elif command == 'configure':
 elif command == 'release_notes':
     os.chdir('typing_practice')
     if platform == 'linux':
-        os.system('xdg-open typing_practice/release_notes.html')
+        os.system('xdg-open release_notes.html')
     elif platform == 'win32':
         os.system('start release_notes.html')
 
