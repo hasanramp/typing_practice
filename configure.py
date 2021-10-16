@@ -30,7 +30,8 @@ if what_to_configure == 'start method':
     configuration_file = open(configuration_file_name, 'w')
     new_config = {
         "no. of words" : {
-        "current" : n_of_words
+        "current" : n_of_words,
+        "options" : "however many you want"
         },
         "start method" : {
             "current" : method,
@@ -61,7 +62,8 @@ elif what_to_configure == 'no of words':
     configuration_file = open(configuration_file_name, 'w')
     new_config = {
         "no. of words" : {
-        "current" : new_no_of_words
+        "current" : new_no_of_words,
+        "options" : "however many you want"
         },
         "start method" : {
             "current" : start_method,
@@ -90,7 +92,8 @@ elif what_to_configure == 'difficulty':
     configuration_file = open(configuration_file_name, 'w')
     new_config = {
         "no. of words" : {
-        "current" : n_of_words
+        "current" : n_of_words,
+        "options" : "however many you want"
         },
         "start method" : {
             "current" : start_method,
