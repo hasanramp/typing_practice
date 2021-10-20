@@ -15,7 +15,7 @@ configuration_file = open(configuration_file_name, 'r')
 configuration_json = json.load(configuration_file)
 
 
-if configuration_json['version'] == "1.0.0":
+if configuration_json['version'] == "1.0.1":
     print('opening release notes')
     os.chdir(parent_dir)
     if platform == 'linux':
