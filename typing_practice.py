@@ -48,7 +48,7 @@ elif command == 'sentence':
 
 elif command == 'show' and sys.argv[2] == 'progress':
     os.chdir('typing_practice')
-    file = 'track_pracitce.py'
+    file = 'track_practice.py'
     if platform == 'linux':
         os.system(f'python3 {file} show_progress')
     elif platform == 'win32':
