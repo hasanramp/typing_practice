@@ -1,7 +1,7 @@
 import time
-import random2
 from typing_test import TypingTest
 from __init__ import get_configuration
+import os
 
 n_of_words, start_method, diffculty = get_configuration()
 
@@ -64,3 +64,9 @@ incorrect_words_str = ', '.join(incorrect_words)
 print(f'{space}incorrect words: {incorrect_words_str}\n')
 print(f'{space}correct number of characters: {correct_number_of_char}\n')
 print(f'{space}total number of characters: {total_number_of_char}\n')
+
+erase = input('erase?( press enter to clean)')
+if erase == 'n':
+    exit()
+
+os.system('cls')

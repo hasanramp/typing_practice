@@ -111,13 +111,11 @@ elif what_to_configure == '!show config':
     configuration_file_name = 'configuration.json'
     configuration_file = open(configuration_file_name, 'r')
     configuration_json = json.load(configuration_file)
-    no_of_words_curr = configuration_json['no. of words']['current']
-    no_of_words_options = configuration_json['no. of words']['options']
-    difficulty_curr = configuration_json['difficulty']['current']
-    difficulty_options = configuration_json['difficulty']['options']
-    start_method_curr = configuration_json['start method']['current']
-    start_method_options = configuration_json['start method']['options']
     print('\n\n')
-    print(f'| start method | current: {start_method_curr}| options: {start_method_options}')
-    print(f'| no. of words | current: {no_of_words_curr}| options: {no_of_words_options}')
-    print(f'|  difficulty  | current: {difficulty_curr}| options: {difficulty_options}')
+    for obj in configuration_json:
+        # print(type(obj))
+        if obj != 'version':
+            current = configuration_json[obj]['current']
+            options = configuration_json[obj]['options']
+            print(f'| start method | current: {current}| options: {options}')
+    print('\n\n')
