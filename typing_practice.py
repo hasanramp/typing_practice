@@ -38,5 +38,10 @@ elif command == 'release_notes':
         os.system('xdg-open release_notes.html')
     elif platform == 'win32':
         os.system('start release_notes.html')
-
-
+elif command == 'sentence':
+    os.chdir('typing_practice')
+    file = 'all_letters_sentence.py'
+    if platform == 'linux':
+        os.system(f'python3 {file}')
+    elif platform == 'win32':
+        os.system(f'py {file}')

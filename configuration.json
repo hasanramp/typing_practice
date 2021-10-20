@@ -1,10 +1,10 @@
 {
     "no. of words": {
-        "current": 25,
+        "current": 30,
         "options": "however many you want"
     },
     "start method": {
-        "current": "timer",
+        "current": "enter",
         "seconds": null,
         "options": [
             "enter",
@@ -17,6 +17,5 @@
             "easy",
             "difficult"
         ]
-    },
-    "version" : "1.0.1"
+    }
 }
