@@ -30,6 +30,11 @@ try:
     input_words = input('enter the words: ')
 except KeyboardInterrupt:
     print('\nEXIT!')
+    erase = input('erase?( press enter to clean)')
+    if erase == 'n':
+        exit()
+
+    os.system('cls')
     exit()
 input_words_list = input_words.split(' ')
 
