@@ -1,6 +1,6 @@
-import os
-from sys import platform
+from datetime import date, datetime
 
-cwd = os.getcwd()
-
-parent_dir = os.path.abspath(os.path.join(cwd, os.pardir))
+today = date.today()
+todays_date = today.strftime("%d/%m/%Y")
+print(todays_date)
+print(datetime.now().strftime("%H:%M:%S"))

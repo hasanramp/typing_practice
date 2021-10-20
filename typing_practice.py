@@ -45,3 +45,11 @@ elif command == 'sentence':
         os.system(f'python3 {file}')
     elif platform == 'win32':
         os.system(f'py {file}')
+
+elif command == 'show progress':
+    os.chdir('typing_practice')
+    file = 'track_pracitce.py'
+    if platform == 'linux':
+        os.system(f'python3 {file} show_progress')
+    elif platform == 'win32':
+        os.system(f'py {file} show_progress')

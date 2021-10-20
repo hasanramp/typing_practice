@@ -2,6 +2,14 @@ import time
 from typing_test import TypingTest
 from __init__ import get_configuration
 import os
+import json
+
+configuration_file_name = 'configuration.json'
+configuration_file = open(configuration_file_name, 'r')
+configuration_json = json.load(configuration_file)
+track_progress = configuration_json['track progress']['current']
+
+
 
 n_of_words, start_method, diffculty = get_configuration()
 
@@ -69,6 +77,17 @@ incorrect_words_str = ', '.join(incorrect_words)
 print(f'{space}incorrect words: {incorrect_words_str}\n')
 print(f'{space}correct number of characters: {correct_number_of_char}\n')
 print(f'{space}total number of characters: {total_number_of_char}\n')
+
+if track_progress == True:
+    from track_practice import TrackPractice
+    from datetime import date, datetime
+
+    today = date.today()
+    todays_date = today.strftime("%d/%m/%Y")
+    
+    curr_time = datetime.now().strftime("%H:%M:%S")
+    practice_tracker = TrackPractice('progress.hdn')
+    practice_tracker.enter_typing_data(time_taken, raw_wpm, wpm, accuracy, todays_date, curr_time)
 
 erase = input('erase?( press enter to clean)')
 if erase == 'n':
