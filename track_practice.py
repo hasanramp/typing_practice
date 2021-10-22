@@ -5,8 +5,10 @@ format in which progress data is stored:
     time_taken, raw_wpm, wpm, accuracy, date, time
 
 '''
-
-command = sys.argv[1]
+try:
+    command = sys.argv[1]
+except IndexError:
+    command = None
 
 class TrackPractice:
     def __init__(self, file):
