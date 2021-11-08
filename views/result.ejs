@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+     crossorigin="anonymous">
+    <title>result</title>
+</head>
+<body>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Accuracy</th>
+                <th scope="col">wpm</th>
+                <th scope="col">Time Taken</th>
+                <th scope="col">Incorrect Words</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row"><%= result.accuracy %></th>
+                <th scope="row"><%= result.wpm %></th>
+                <th scope="row"><%= result.timeTaken %></th>
+                <th scope="row"><%= result.incorrectWords %></th>
+                
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" value="Back" class="btn btn-primary" onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            location.replace("/")
+        }
+    </script>
+</body>
+</html>

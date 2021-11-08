@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+     crossorigin="anonymous">
+     <!-- <link rel="stylesheet" href="./index.css"> -->
+    <title>Typing Test</title>
+</head>
+<body>
+    <div id="main body">
+        <form action="/result" method="POST" id="main-form">
+            <label style="font-size: 40px;"><%= words.text %></label><br>
+            <input id="timeTaken" name="timeTaken" type="text" class="hidden-label" style="visibility:hidden;">
+            <button id="startButton" type="button" onclick="startTypingTest()" class="btn btn-primary">Start</button>
+            <button id="configureButton" type="button" onclick="redirectToConfigure()" class="btn btn-primary">Configure</button>
+            <input id="wordsInput" autocomplete="off" name="wordsInput" type="text" class="form-control" style="font-size:35px;">
+            <button id="submitButton" type="submit" style="visibility: hidden">Submit</button>
+            <p id="hasStarted" style="visibility: hidden">false</p>
+            <script>
+                let startTime, endTime, timeDiff;
+                let timeTaken = 0;
+                function start(){
+                    startTime = new Date()
+                }
+                
+                function end() {
+                    endTime = new Date()
+                    timeDiff = (endTime - startTime)
+                    timeDiff /= 1000;
+                    let seconds = Math.round(timeDiff, 1)
+                    return seconds
+                }
+                function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                }
+                let i = 0
+                async function startTimer() {
+                    while (i < 10) {
+                        timeTaken = timeTaken + 1
+                        // console.log(timeTaken);
+                        let pElem = document.getElementById('timeTaken')
+                        pElem.value = timeTaken
+                        
+                        // console.log(pElem.innerHTML)
+                        await sleep(1000)
+
+                    }
+                }
+                async function lookForEnter() {
+                    document.getElementById('wordsInput').addEventListener('keyup', function(event) {
+                        if (event.keyCode === 13) {
+                            // let timeTakenInSeconds = end()
+                            // let pElem = document.getElementById('timeTaken')
+                            // pElem.value = timeTakenInSeconds
+                            document.getElementById('submitButton').click();
+                        }
+                    })
+                }
+
+                async function startTypingTest() {
+                    let hasStarted = document.getElementById('hasStarted').innerHTML
+                    console.log(hasStarted)
+                    if (hasStarted == 'false') {
+                        hasStarted = 'true'
+                        let startButton = document.getElementById('startButton')
+                        startButton.innerHTML = '1'
+                        await sleep(1000)
+                        startButton.innerHTML = '2'
+                        await sleep(1000)
+                        startButton.innerHTML = 'START'
+                        startButton.setAttribute('class', 'btn btn-secondary')
+                        document.getElementById('wordsInput').value = ''
+                        startTimer()
+                        // start()
+                        lookForEnter()
+                    }else {
+                        
+                    }
+                    
+                }
+
+                
+                let wordsInput = document.getElementById('wordsInput').value
+                
+                function changeTimeTakenValue() {
+                    end()
+                    document.getElementById('timeTaken').innerHTML = timeDiff
+                    console.log(timeDiff)
+                    sleep(10000)
+                }
+                function redirectToConfigure() {
+                    location.replace("/configure")
+                }
+
+            </script>
+        </form>
+    </div>
+</body>
+</html>
