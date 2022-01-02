@@ -1,11 +1,48 @@
 import json
-from __init__ import get_configuration
 
 
 # configuration_json = json.load(configuration_file)
     
+def get_configuration():
+    configuration_file_name = 'configuration.json'
+    configuration_file = open(configuration_file_name, 'r')
+    configuration_json = json.load(configuration_file)
+    
+    n_of_words = configuration_json['no. of words']['current']
+    
+    start_method = configuration_json['start method']['current']
+    difficulty = configuration_json['difficulty']['current']
+    track_progress = configuration_json['track progress']['current']
+    return n_of_words, start_method, difficulty, track_progress
 
 what_to_configure = input('what to configure? (type help to get more information): ')
+n_of_words, start_method, difficulty, track_progress = get_configuration()
+
+def set_config(n_of_words=n_of_words, start_method=start_method, difficulty= difficulty, track_progress=track_progress):
+    # n_of_words, start_method, difficulty, track_progress = get_configuration()
+    configuration_file_name = 'configuration.json'
+    configuration_file = open(configuration_file_name, 'w')
+    new_config = {
+        "no. of words" : {
+        "current" : n_of_words,
+        "options" : "however many you want"
+        },
+        "start method" : {
+            "current" : start_method,
+            "seconds" : None,
+            "options" : ["enter", "timer"]
+        },
+        "difficulty" : {
+            "current" : difficulty,
+            "options" : ["easy", "difficult"]
+        },
+        "track progress" : {
+            "current" : track_progress,
+            "options" : [True, False]
+        }
+    }
+    json.dump(new_config, configuration_file, indent=4)
+
 
 def get_options(setting):
     configuration_file_name = 'configuration.json'
@@ -25,25 +62,7 @@ if what_to_configure == 'start method':
         
         print('options are: ' + options_str)
         exit()
-    n_of_words, start_method, difficulty = get_configuration()
-    configuration_file_name = 'configuration.json'
-    configuration_file = open(configuration_file_name, 'w')
-    new_config = {
-        "no. of words" : {
-        "current" : n_of_words,
-        "options" : "however many you want"
-        },
-        "start method" : {
-            "current" : method,
-            "seconds" : None,
-            "options" : ["enter", "timer"]
-        },
-        "difficulty" : {
-        "current" : difficulty,
-        "options" : ["easy", "difficult"]
-        }
-    }
-    json.dump(new_config, configuration_file, indent=4)
+    set_config(start_method=method)
 
 elif what_to_configure == 'no of words':
     new_no_of_words = input('new number of words: ')
@@ -57,25 +76,7 @@ elif what_to_configure == 'no of words':
         exit()
     else:
         new_no_of_words = int(new_no_of_words)
-    n_of_words, start_method, difficulty = get_configuration()
-    configuration_file_name = 'configuration.json'
-    configuration_file = open(configuration_file_name, 'w')
-    new_config = {
-        "no. of words" : {
-        "current" : new_no_of_words,
-        "options" : "however many you want"
-        },
-        "start method" : {
-            "current" : start_method,
-            "seconds" : None,
-            "options" : ["enter", "timer"]
-        },
-        "difficulty" : {
-        "current" : difficulty,
-        "options" : ["easy", "difficult"]
-        }
-    }
-    json.dump(new_config, configuration_file, indent=4)
+    set_config(n_of_words=new_no_of_words)
 
 elif what_to_configure == 'difficulty':
     new_diffculty = input('new difficulty: ')
@@ -87,25 +88,7 @@ elif what_to_configure == 'difficulty':
             options_str += option_with_comma
         print('options are: ' + options_str)
         exit()
-    n_of_words, start_method, difficulty = get_configuration()
-    configuration_file_name = 'configuration.json'
-    configuration_file = open(configuration_file_name, 'w')
-    new_config = {
-        "no. of words" : {
-        "current" : n_of_words,
-        "options" : "however many you want"
-        },
-        "start method" : {
-            "current" : start_method,
-            "seconds" : None,
-            "options" : ["enter", "timer"]
-        },
-        "difficulty" : {
-        "current" : new_diffculty,
-        "options" : ["easy", "difficult"]
-        }
-    }
-    json.dump(new_config, configuration_file, indent=4)
+    set_config(difficulty=new_diffculty)
 
 elif what_to_configure == '!show config':
     configuration_file_name = 'configuration.json'
@@ -117,5 +100,17 @@ elif what_to_configure == '!show config':
         if obj != 'version':
             current = configuration_json[obj]['current']
             options = configuration_json[obj]['options']
-            print(f'| start method | current: {current}| options: {options}')
+            print(f'| {obj} | current: {current}| options: {options}')
+
+elif what_to_configure == 'track progress':
+    new_track_progress = input('do you want to track your progress?(y/N): ')
+    if new_track_progress == 'y':
+        track_progress = True
+    elif new_track_progress == 'N':
+        track_progress = False
+    else:
+        print('Abort!')
+        exit()
+
+    set_config(track_progress=track_progress)
     print('\n\n')

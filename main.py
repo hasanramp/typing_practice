@@ -3,6 +3,7 @@ from typing_test import TypingTest
 from __init__ import get_configuration
 import os
 import json
+from termcolor import colored
 
 configuration_file_name = 'configuration.json'
 configuration_file = open(configuration_file_name, 'r')
@@ -32,10 +33,10 @@ init_time = time.time()
 words = tt.get_random_words()
 words_str = ', '.join(words)
 print('\n \n')
-print('========================================================================================')
+print(colored('========================================================================================', 'blue'))
 print(words_str)
 try:
-    input_words = input('enter the words: ')
+    input_words = input('enter the words: \n')
 except KeyboardInterrupt:
     print('\nEXIT!')
     erase = input('erase?( press enter to clean)')
@@ -59,20 +60,25 @@ try:
 
         index += 1
 except IndexError:
-    print('the number of words entered are more than the number of words printed out. You probably made some mistake while typing which resulted in this. Please try again')
-
+    print(colored('the number of words entered are more than the number of words printed out. You probably made some mistake while typing which resulted in this. Please try again', 'red'))
+#
 time_taken = round(time.time() - init_time, 1)
 raw_wpm, total_number_of_char = tt.calculate_wpm(words, time_taken)
+raw_wpm = colored(round(raw_wpm, 1), 'cyan')
+total_number_of_char = colored(total_number_of_char, 'cyan')
 wpm, correct_number_of_char = tt.calculate_wpm(correct_words, time_taken)
-accuracy = len(correct_words) / len(words) * 100
+wpm = colored(round(wpm, 1), 'cyan')
+correct_words = colored(correct_words, 'cyan')
+accuracy = colored(str(len(correct_words) / len(words) * 100), 'cyan')
+time_taken = colored(str(round(time.time() - init_time, 1)), 'cyan')
 
-print('========================================================================================')
+print(colored('========================================================================================', 'blue'))
 print('\n \n')
 space = '                         '
 print(f'{space}Accuracy = {accuracy}%\n')
 print(f'{space}time taken = {time_taken}\n')
-print(f'{space}Raw wpm: {round(raw_wpm, 1)}\n')
-print(f'{space}wpm = {round(wpm, 1)}\n')
+print(f'{space}Raw wpm: {raw_wpm}\n')
+print(f'{space}wpm = {wpm}\n')
 incorrect_words_str = ', '.join(incorrect_words)
 print(f'{space}incorrect words: {incorrect_words_str}\n')
 print(f'{space}correct number of characters: {correct_number_of_char}\n')
@@ -89,8 +95,10 @@ if track_progress == True:
     practice_tracker = TrackPractice('progress.hdn')
     practice_tracker.enter_typing_data(time_taken, raw_wpm, wpm, accuracy, todays_date, curr_time)
 
-erase = input('erase?( press enter to clean)')
+erase = input('erase?( press enter to clean) redo? (press "r")')
 if erase == 'n':
     exit()
+elif erase == 'r':
+    os.system('python3 main.py')
 
 os.system('cls')

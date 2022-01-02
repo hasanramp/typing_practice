@@ -18,9 +18,11 @@
             "difficult"
         ]
     },
-    "version" : "1.0.2",
-    "track progress" : {
-        "current" : true,
-        "options": [true, false]
+    "track progress": {
+        "current": true,
+        "options": [
+            true,
+            false
+        ]
     }
 }
